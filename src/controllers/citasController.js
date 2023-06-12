@@ -47,6 +47,7 @@ export async function crear_cita(req, res) {
     let city = await citas.create({ fecha, hora_id, lugar },
 
     );
+    
 
     res.json(city)
   } catch (error) {

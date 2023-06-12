@@ -2,6 +2,7 @@
 import Filter from 'bad-words-es';
 // import { Error } from "sequelize"
 import { comentarios } from "../models/comentariosModel.js";
+import { persona } from "../models/personaModel.js";
 
 // Controlador para obtener todos los comentarios
 export async function obtenerComentarios(req, res) {
@@ -89,5 +90,29 @@ export async function eliminarComentario(req, res) {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
+  }
+}
+
+
+
+export async function crearComentario1(req, res) {
+  const { nombre, comentario } = req.body;
+
+  try {
+    const personaLogueada = req.session.personaLogueada; // Assuming the logged-in person information is stored in req.session.personaLogueada
+
+    const nuevoComentario = await comentario.create({
+      nombre: personaLogueada.nombre,
+      comentario,
+    });
+
+    const persona = await persona.findByPk(personaLogueada.id_persona);
+
+    nuevoComentario.persona = persona;
+
+    res.json({ message: "Comentario creado exitosamente", comentario: nuevoComentario });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al crear el comentario" });
   }
 }
