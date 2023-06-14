@@ -131,9 +131,6 @@ function limiteCitasPorDia(fecha) {
   const limiteCitas = limiteCitasIniciales + (diasPasados * 10);
   return limiteCitas;
 }
-
-
-
 //Método para dar reseña
 export async function editar_reseña(req, res) {
   try {
