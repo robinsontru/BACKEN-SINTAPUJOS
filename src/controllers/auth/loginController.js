@@ -71,7 +71,7 @@ export async function registroPersona(req, res) {
       contrasena: passHash,
     });
     //SE OBTIENE UNA RESPUESTA JSON CON LOS CAMPOS YA SOLICITADOS
-    res.send({
+    registeredUser = {
       id_persona: user.id_persona,
       nombre,
       apellido,
@@ -81,9 +81,9 @@ export async function registroPersona(req, res) {
       telefono,
       email,
       rol,
-      //Si se requiere mostrar la contraseña
-      // contrasena: passHash,
-    });
+    };
+
+    res.send(registeredUser);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
