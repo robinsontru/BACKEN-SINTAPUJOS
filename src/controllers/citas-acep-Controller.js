@@ -72,7 +72,7 @@ export async function editar_reseña(req, res) {
   try {
     const { cita_id } = req.params;
     const { descripcion } = req.body
-    const cita = await citas.findByPk(cita_id);
+    const cita = await CitaEliminada.findByPk(cita_id);
     cita.descripcion = descripcion;
     await cita.save();
     res.json(cita);

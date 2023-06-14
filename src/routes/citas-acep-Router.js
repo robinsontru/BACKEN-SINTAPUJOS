@@ -1,6 +1,6 @@
 // Importar el Router de Express y el controlador de comentarios
 import { Router } from "express";
-import { mirar_citas,crear_citass,eliminar_citas } from "../controllers/citas-acep-Controller.js";
+import { mirar_citas,crear_citass,eliminar_citas,editar_reseña } from "../controllers/citas-acep-Controller.js";
 
 // Crear un router para las rutas de comentarios
 const router = Router();
@@ -8,6 +8,7 @@ const router = Router();
 //  Definir las rutas para obtener y agregar comentarios
 // router.post("/citas",crear_cita);
 router.post("/cita",crear_citass);
+router.put("/cita/:cita_id",editar_reseña);
 
 router.delete("/cita/:id", eliminar_citas);
 
