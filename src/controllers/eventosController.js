@@ -6,7 +6,7 @@ import { Producto } from "../models/eventoModel.js";
 import { fileURLToPath } from 'url';
 const filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(filename);
-// const storage = multer({ dest: 'public/images/' });
+const storage = multer({ dest: 'src/public' });
 
 //constroller para observar las img 
 export async function verimg(req, res) {

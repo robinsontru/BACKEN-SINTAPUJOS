@@ -1,8 +1,8 @@
 import {Router} from "express";
-import {recuperar,ActualizarContraseña} from "../controllers/auth/recuperar_contrasenaController.js"
+import {recuperar,ActualizarContrasena} from "../controllers/auth/recuperar_contrasenaController.js"
 
 const router = Router()
 
 router.post('/recuperar',recuperar)
-router.patch('/actualizarContrasena/:email',ActualizarContraseña)
+router.patch('/actualizarContrasena/:email',ActualizarContrasena)
 export default router;

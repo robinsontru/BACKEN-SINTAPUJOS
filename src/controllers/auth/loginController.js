@@ -82,7 +82,7 @@ export async function registroPersona(req, res) {
       email,
       rol,
       //Si se requiere mostrar la contraseña
-      // contrasena: passHash,
+      contrasena: passHash,
     });
   } catch (error) {
     console.log(error);

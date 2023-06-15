@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import {DB_PORT,DB_USER,DB_PASSWORD,DB_DATABASE} from '../config.js/config.js'
+import {DB_PORT,DB_USER,DB_PASSWORD,DB_DATABASE} from '../config/config.js'
 export const sequelize = new Sequelize(
     DB_DATABASE,//nombre de la base de datos
     DB_USER,//usuario
@@ -15,5 +15,5 @@ export const sequelize = new Sequelize(
             idle: 10000
         },
 
-    })
+    });
 
