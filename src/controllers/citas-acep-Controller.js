@@ -1,5 +1,4 @@
 // Importar el modelo de Sequelize y la instancia de Sequelize
-import { sequelize } from "../database/database.js";
 import { CitaEliminada } from "../models/CitaEliminadamodel.js";
 
 // Definir los métodos del controlador

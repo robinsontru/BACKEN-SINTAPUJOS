@@ -12,7 +12,7 @@ import './models/citasModel.js';
 async function main() {
     try {
         //ELIMINA Y CREA TABLAS
-        await sequelize.sync({ force:true});
+        await sequelize.sync({ force:false});
         app.listen(4000);
         console.log('server is listening on port :)', 4000)
 

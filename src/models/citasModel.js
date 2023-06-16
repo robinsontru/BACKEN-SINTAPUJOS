@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-// import {aprendiz} from "../models/aprendizModel.js";
-// import {horas} from "../models/horaCitasModel.js"
+import {CitaEliminada} from "../models/CitaEliminadamodel.js";
+
 
 export const citas= sequelize.define('cita',{
     cita_id: {
@@ -32,8 +32,8 @@ export const citas= sequelize.define('cita',{
 });
 
 //Relaciones
-// citas.belongsTo(aprendiz, {foreignkey: "aprendiz_id"});
-// aprendiz.hasOne(citas, {foreignkey: "aprendiz_id"});
+citas.belongsTo(CitaEliminada, {foreignkey: "cita_id"});
+CitaEliminada.hasOne(citas, {foreignkey: "cita_id"});
 
 // citas.belongsTo(horas, {foreignkey: "hora_id"});
 // horas.hasMany(citas, {foreignkey: "hora_id"});

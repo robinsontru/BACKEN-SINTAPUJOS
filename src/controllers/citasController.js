@@ -1,5 +1,3 @@
-
-
 // Importar el modelo de Sequelize y la instancia de Sequelize
 import { sequelize } from "../database/database.js";
 import { citas } from "../models/citasModel.js";
@@ -40,15 +38,10 @@ export async function obtener_cita_id(req, res) {
 
 // Método para crear un persona
 export async function crear_cita(req, res) {
-
   const { fecha, hora_id, lugar } = req.body;
-
   try {
     let city = await citas.create({ fecha, hora_id, lugar },
-
     );
-    
-
     res.json(city)
   } catch (error) {
     console.error(error);
@@ -78,7 +71,7 @@ export async function eliminar_cita_tabla(req, res) {
     const cita = await citas.findOne({ where: { cita_id: id } });
     if (!cita) {
       return res.status(404).json({ message: 'Cita no encontrada' });
-   
+
     }
 
     await citas.destroy({ where: { cita_id: id } });
