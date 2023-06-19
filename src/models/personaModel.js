@@ -22,9 +22,9 @@ export const persona = sequelize.define('persona', {
     },
     contrasena: {
         type: DataTypes.STRING,
-
         allowNull: false
-    },
+      },
+      
     email: {
         type: DataTypes.STRING(100),
         allowNull: false

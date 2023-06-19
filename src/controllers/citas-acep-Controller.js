@@ -37,10 +37,10 @@ export async function obtener_citas_id(req, res) {
 // Método para crear un persona
 export async function crear_citass(req, res) {
 
-  const { fecha, hora_id, lugar } = req.body;
+  const { fecha, hora_id, n_documento } = req.body;
 
   try {
-    let city = await CitaEliminada.create({ fecha, hora_id, lugar },
+    let city = await CitaEliminada.create({ fecha, hora_id, n_documento },
 
     );
 

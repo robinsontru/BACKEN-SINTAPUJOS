@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../database/database.js";
-export    const CitaEliminada = sequelize.define('CitaEliminada', {
+export    const CitaEliminada = sequelize.define('citaeliminada', {
     cita_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -18,5 +18,10 @@ export    const CitaEliminada = sequelize.define('CitaEliminada', {
       type: DataTypes.STRING,
     //   allowNull: false,
     },
+    n_documento: {
+      type: DataTypes.BIGINT,
+   
+  },
+
   });
   

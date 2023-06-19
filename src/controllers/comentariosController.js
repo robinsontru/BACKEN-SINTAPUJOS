@@ -48,34 +48,25 @@ filter.addWords('gonorrea', "marica", "hpta", "hp", "mk", "gnrrea", "hijueputa",
 
 // Método para crear un comentario
 export async function crearComentarios(req, res) {
-  const { comentario, nombre } = req.body;
+  const { comentario, n_documento } = req.body;
 
-  if (!comentario) {
-    return res.status(400).json({ message: Error.message })
+  if (!comentario ) {
+    return res.status(400).json({ message: 'El comentario y el número de documento son campos requeridos.' });
   }
-  try {
 
+  try {
     const comentarioFiltrado = filter.clean(comentario);  // Filtra el comentario utilizando la función de filtrado
 
     // Crea el comentario en la base de datos
-    const nuevoComentario = await comentarios.create({ comentario: comentarioFiltrado });
+    const nuevoComentario = await comentarios.create({ comentario: comentarioFiltrado, n_documento });
 
-    // let comment = await comentarios.create({ comentario,nombre },
-    {
-      fields: ["comentario", "nombre"]
-    }
-
-    // return res.status(200).json({ message: 'Comentario creado correctamente' })
-    res.json(nuevoComentario)
+    res.json(nuevoComentario);
   } catch (error) {
-    // if (!comentario){
-    //   return res.status(400).json({ message:Error.message})
-    // }
     console.error(error);
-    res.status(500).json({ message: error.message, });
-
+    res.status(500).json({ message: error.message });
   }
 }
+
 
 // Controlador para eliminar un comentario forma 1
 export async function eliminarComentario(req, res) {
@@ -96,13 +87,13 @@ export async function eliminarComentario(req, res) {
 
 
 export async function crearComentario1(req, res) {
-  const { nombre, comentario } = req.body;
+  const { n_documento, comentario } = req.body;
 
   try {
     const personaLogueada = req.session.personaLogueada; // Assuming the logged-in person information is stored in req.session.personaLogueada
 
     const nuevoComentario = await comentario.create({
-      nombre: personaLogueada.nombre,
+      n_documento: personaLogueada.n_documento,
       comentario,
     });
 

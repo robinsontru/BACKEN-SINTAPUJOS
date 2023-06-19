@@ -38,9 +38,9 @@ export async function obtener_cita_id(req, res) {
 
 // Método para crear un persona
 export async function crear_cita(req, res) {
-  const { fecha, hora_id, lugar } = req.body;
+  const { fecha, hora_id, lugar,n_documento } = req.body;
   try {
-    let city = await citas.create({ fecha, hora_id, lugar },
+    let city = await citas.create({ fecha, hora_id, lugar,n_documento },
     );
     res.json(city)
   } catch (error) {
@@ -80,6 +80,7 @@ export async function eliminar_cita_tabla(req, res) {
       fecha: cita.fecha,
       hora_id: cita.hora_id,
       descripcion: cita.descripcion,
+      n_documento:cita.n_documento
     });
 
     return res.status(200).json({ message: 'Cita eliminada correctamente' });
@@ -93,7 +94,7 @@ export async function eliminar_cita_tabla(req, res) {
 // Método para crear un persona con restricion
 
 export async function crear_cita1(req, res) {
-  const { fecha, hora_id, descripcion } = req.body;
+  const { fecha, hora_id, descripcion,n_documento } = req.body;
   try {
     // Obtener la fecha actual
     const fechaActual = new Date().toISOString().split('T')[0];
@@ -110,7 +111,7 @@ export async function crear_cita1(req, res) {
     const horaInicio = new Date(fecha + ' ' + hora_id);
     const horaFin = new Date(horaInicio.getTime() + 20 * 60000); // Sumar 20 minutos (20 * 60 * 1000 ms)
     // Crear una nueva cita
-    let newCita = await citas.create({ fecha, hora_id, descripcion });
+    let newCita = await citas.create({ fecha, hora_id, descripcion,n_documento });
     res.json(newCita);
   } catch (error) {
     console.error(error);

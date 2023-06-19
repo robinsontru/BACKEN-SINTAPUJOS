@@ -7,8 +7,9 @@ export const comentarios = sequelize.define('comentarios', {
         primaryKey: true,
         autoIncrement: true,
     },   
-    nombre: {
-      type:DataTypes.STRING(50),
+    n_documento: {
+        type: DataTypes.BIGINT,
+     
     },
     comentario: {
         type: DataTypes.TEXT,

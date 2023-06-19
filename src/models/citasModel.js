@@ -9,11 +9,6 @@ export const citas= sequelize.define('cita',{
         primaryKey: true,
         autoIncrement: true,
       },
-      aprendiz_id:{
-        type: DataTypes.INTEGER.UNSIGNED,//llave foranea de Aprendiz
-        // allowNull: false
-
-      },
       fecha: {
         type: DataTypes.DATE,
         // allowNull: false
@@ -25,7 +20,11 @@ export const citas= sequelize.define('cita',{
         
       descripcion:{
           type: DataTypes.STRING,
-        }
+        },
+        n_documento: {
+          type: DataTypes.BIGINT,
+       
+      },
 },{
   //CreatedAt y UpdatedAt no aparescan.
   timestamps: false
