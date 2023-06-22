@@ -98,27 +98,40 @@ export const recuperar = async (req, res) => {
         });
 };
 
-export const ActualizarContraseña = async(req, res)=>{
-    const {email} = req.params;
-    //busca el correo
-    const user = await persona.findOne({
-        where: {email:email}
-    });
-    const id = user.id_persona
-    const {codigoRecuperar, contrasena} = req.body
-    const passHash = await bcryptjs.hash(contrasena, 8);
-    if(codigoRecuperar == user.codigoRecuperar){
-        try {
-            const usuarios = await persona.findByPk(id)
-            usuarios.codigoRecuperar = codigoRecuperar,
-            usuarios.contrasena = passHash
-            await usuarios.save();
-            res.status(200).json({message: "Se ha actualizado tus datos correctamente", usuarios})
-        } finally{
 
-        }
-    }else{
-        return res.status(500).json({message: "Error"})
+
+
+
+export const ActualizarContrasena = async (req, res) => {
+    try {
+      const { email } = req.params;
+      const { codigoRecuperar, contrasena } = req.body;
+  
+      // Buscar el usuario por su correo electrónico
+      const user = await persona.findOne({ where: { email } });
+  
+      if (!user) {
+        return res.status(404).json({ message: 'No se encontró el usuario' });
+      }
+  
+      const id = user.id_persona;
+  
+      // Verificar si el código de recuperación coincide
+      if (codigoRecuperar !== user.codigoRecuperar) {
+        return res.status(400).json({ message: 'Código de recuperación inválido' });
+      }
+  
+      // Hash de la nueva contraseña
+      const passHash = await bcryptjs.hash(contrasena, 8);
+  
+      // Actualizar la contraseña y guardar el usuario
+      user.codigoRecuperar = codigoRecuperar;
+      user.contrasena = passHash;
+      await user.save();
+  
+      res.status(200).json({ message: 'Se ha actualizado tu contraseña correctamente', user });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error en el servidor' });
     }
-
-}
+  };
