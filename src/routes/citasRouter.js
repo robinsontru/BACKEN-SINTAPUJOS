@@ -9,7 +9,7 @@ const router = Router();
 // router.post("/citas",crear_cita);
 router.post("/citas",crear_cita1);
 router.put("/citas/:cita_id",editar_reseña);
-router.delete("/citas/:id", eliminar_cita);
+router.delete("/citass/:id", eliminar_cita);
 router.delete("/cita/:id", eliminar_cita_tabla);
 router.get("/citas",mirar_citas);
 router.get("/citas/:id", obtener_cita_id);
