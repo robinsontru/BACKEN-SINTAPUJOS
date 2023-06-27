@@ -27,7 +27,7 @@ app.use('/', eventosRouter);
 //ruta de persona
 app.use('/', personaRoutes);
 //Ruta comentarios
-app.use("/", comentarioRoutes);
+app.use("/api", comentarioRoutes);
 //Ruta cita
 app.use("/", citaRoutes);
 //Ruta citas

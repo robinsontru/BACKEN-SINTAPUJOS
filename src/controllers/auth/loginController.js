@@ -35,20 +35,22 @@ export async function getPersona(req, res) {
     });
   }
 };
+
+
 //FUNCION PARA TRAER UNA APRENDICES DE LA DB POR ID
 export async function getIdpersona(req, res) {
+  const {n_documento } = req.params;
   try {
-    const user = await persona.findByPk(req.params.id);//PROMESA PARA TRAER EL ID MEDIANTE EL REQ
-    if (!user) {
-      return res.status(404).json({
-        message: "Persona no encontrada",
-      });
-    }
-    res.json(user);
+    const comment = await persona.findOne(
+      {
+        where: {
+          n_documento:n_documento
+        }
+      }
+    );
+    res.json(comment);
   } catch (error) {
-    return res.status(500).json({
-      message: "ALGO SALIO MAL",
-    });
+    res.status(500).json({ message: error.message, });
   }
 };
 
