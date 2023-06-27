@@ -36,6 +36,16 @@ export async function getPersona(req, res) {
   }
 };
 
+export async function getPersona1(req, res) {
+  try {
+    const user = await persona.findAll();//PROMESA PARA TRAER TODOS LOS APRENDICES
+    res.json(user);
+  } catch (error) {
+    return res.status(500).json({
+      message: "ALGO SALIO MAL",
+    });
+  }
+};
 
 //FUNCION PARA TRAER UNA APRENDICES DE LA DB POR ID
 export async function getIdpersona(req, res) {

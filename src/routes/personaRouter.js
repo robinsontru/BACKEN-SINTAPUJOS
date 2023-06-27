@@ -7,7 +7,7 @@ import {
   deletePersona,
   getIdpersona,
   getPersona,
-  // getPersona1,
+  getPersona1,
   updatePersona,
   loginPersona,
   verificarPersonaExistente,
@@ -25,7 +25,8 @@ router.use(function (req, res, next) {
 //Peticiones tanto del login y registro.
 // router.get("/persona", getPersona1);
 router.get("/", getPersona);
-router.get("/persona/:id", getIdpersona);
+router.get("/persona", getPersona);
+router.get("/persona/:n_documento", getIdpersona);
 router.patch("/persona/:id", updatePersona);
 router.delete("/persona/:id", deletePersona);
 
